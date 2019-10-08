@@ -5,6 +5,8 @@ This folder contains the data to analyze movies in 2014 and 2015.
 This data was compiled by FiveThirtyEight and includes every film that had a Rotten Tomatoes rating, a RT user rating, a Metacritic score, a Metacritic User score, and IMDb score, and at least 30 fan reviews on Fandango, as of August 24, 2015.
 The original data an be found at [this Github link](https://github.com/fivethirtyeight/data/tree/master/fandango).
 
+Month, genre, the binary animation variable, and binary dump month variable were added to the completed FiveThirtyEight dataset, and are current, as of October 8, 2019. The figures for month and genre were taken from [IMDb](https://www.imdb.com/?ref_=nv_home), and the animation and dump month variables were derived from this information.
+
 ## Summary of Variables
 
 Header | Definition
