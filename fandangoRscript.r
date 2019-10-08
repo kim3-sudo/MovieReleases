@@ -1,2 +1,23 @@
+############################################################
+# R code to analyze fandango.csv
+# authors: R Schultz, S Silver, S Kim
+############################################################
+
+
+############################################################
+## load packages
 library(mosaic)
-# I don't know how this works, including what adding a file does. This is a public gist though, so we could share it with Erin if we're having issues
+
+## LOAD DATA
+#SEJIN'S FILE IMPORT
+fandango <- read.csv("C:/Users/skim2/Downloads/fandango.csv")
+
+# SHANTI'S FILE IMPORT
+fandango <- read.csv("")
+
+# RYAN'S FILE IMPORT
+fandango <- read.csv("")
+
+
+############################################################
+##### R CODE #####
