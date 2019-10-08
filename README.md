@@ -32,7 +32,7 @@ Header | Definition
 `RT_user_norm_round` | The Rotten Tomatoes user score for the film , normalized to a 0 to 5 point system and rounded to the nearest half-star
 `Metacritic_norm_round` | The Metacritic critic score for the film, normalized to a 0 to 5 point system and rounded to the nearest half-star
 `Metacritic_user_norm_round` | The Metacritic user score for the film, normalized to a 0 to 5 point system and rounded to the nearest half-star
-`IMDB_norm_round | The IMDb` user score for the film, normalized to a 0 to 5 point system and rounded to the nearest half-star
+`IMDB_norm_round` | The IMDb user score for the film, normalized to a 0 to 5 point system and rounded to the nearest half-star
 `Metacritic_user_vote_count` | The number of user votes the film had on Metacritic
 `IMDB_user_vote_count` | The number of user votes the film had on IMDb
 `Fandango_votes` | The number of user votes the film had on Fandango
