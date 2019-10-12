@@ -1,0 +1,79 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[none]{hyphenat}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{ragged2e}
+\usepackage{hanging}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+
+\fancyhead{}
+\fancyhead[L]{ABBREVIATED TITLE}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+\fancypagestyle{plain}{
+	\fancyhead{}
+	\fancyhead[L]{Running head: ABBREVIATED TITLE}
+	\fancyfoot{}
+	\fancyhead[R]{\thepage}
+}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+
+\doublespacing
+
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+	\thispagestyle{plain}
+	\begin{center}
+		\vspace*{150pt}
+		Full Title Goes Here \\
+		Shanti Silver, Ryan Schultz \& Sejin Kim \\
+		Kenyon College \\
+	\end{center}
+	\vspace*{120pt}
+	\centering{Author Note} \\
+	\begin{raggedright}
+		Shanti Silver, Ryan Schultz \& Sejin Kim, Kenyon College. \\
+		Contact: \href{mailto:silver1@kenyon.edu}{silver1@kenyon.edu}, \href{mailto:schultz4@kenyon.edu}{schultz4@kenyon.edu}, \href{mailto:kim3@kenyon.edu}{kim3@kenyon.edu} \\
+		\vspace*{40pt}
+		\textit{Keywords:} some keywords go here
+	\end{raggedright}
+	
+	\newpage
+
+	\begin{center}
+		The Title Again
+	\end{center}
+	\begin{center}
+		\textbf{Heading 1 Text}
+	\end{center}
+	\justify
+	%PUT THE TEXT HERE, THIS LIPSUM IS FOR SOME FILLER
+	\lipsum[10-13]
+	\begin{center}
+		\textbf{Adding Power}
+	\end{center}
+	\justify
+	%PUT THE TEXT HERE, THIS LIPSUM IS FOR SOME FILLER
+	\lipsum[14-17]
+	
+	\newpage
+	
+	\begin{center}
+		References
+	\end{center}
+	\raggedright
+	\begin{hangparas}{.5in}{1}
+		Citation needed.
+	\end{hangparas}
+\end{document}
