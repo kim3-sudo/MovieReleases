@@ -5,7 +5,7 @@ This folder contains the data to analyze movies in 2014 and 2015.
 This data was compiled by FiveThirtyEight and includes every film that had a Rotten Tomatoes rating, a RT user rating, a Metacritic score, a Metacritic User score, and IMDb score, and at least 30 fan reviews on Fandango, as of August 24, 2015.
 The original data an be found at [this Github link](https://github.com/fivethirtyeight/data/tree/master/fandango).
 
-Month, genre, the binary animation variable, and binary dump month variable were added to the completed FiveThirtyEight dataset, and are current, as of October 8, 2019. The figures for month and genre were taken from [IMDb](https://www.imdb.com/?ref_=nv_home), and the animation and dump month variables were derived from this information.
+Month, the binary animation variable, and binary dump month variable were added to the completed FiveThirtyEight dataset, and are current, as of October 8, 2019. The figures for month and the `ANIMATED_BIN` variable were taken from [IMDb](https://www.imdb.com/?ref_=nv_home), and the animation and dump month variables were derived from this information. Genre and MPAA rating information was also added to the completed FiveThirtyEight dataset, and are current, as of 11 October 2019. `BOMGENRE`, `MPAA`, and most of the binary variables indicating genre were taken from [Box Office Mojo](https://www.boxofficemojo.com/), and these variables were derived from that information.
 
 ## Summary of Variables
 
@@ -16,7 +16,7 @@ Header | Definition
 `MONTH_USE` | The month that the film was released in its home country, encoded as a numerical variable: (January = 1) (February =2) (March=3) (April =4) (May=5) (June=6) (July = 7) (August = 8) (September =9) (October =10) (November =11) (December =12)
 `BOMGENRE` | The genre listed on the [Box Office Mojo](https://www.boxofficemojo.com/) page for the film, unless it is animated; animation is noted in the `ANIMATED_BIN` variable
 `MPAA` | The rating given by the MPAA for the film; see bottom of README.md for important information on MPAA ratings!
-`ANIMATED_BIN` | `BIN_ACTION` | A binary variable for the *Animation* genre, as defined by IMDb. (1 = TRUE) (0 = FALSE)
+`ANIMATED_BIN` | A binary variable for the *Animation* genre, as defined by IMDb. (1 = TRUE) (0 = FALSE)
 `NO_USE_DUMPMONTH_BIN` | Whether the film was released in a "dump month" - January, February, August, or September
 `RottenTomatoes` | The Rotten Tomatoes Tomatometer score  for the film
 `RottenTomatoes_User` | The Rotten Tomatoes user score for the film
