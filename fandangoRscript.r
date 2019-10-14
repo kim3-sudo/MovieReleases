@@ -108,3 +108,64 @@ step(fullRT, scale=MSE, direction="backward")
 step(emptyRT, scope=list( upper=fullRT ), scale=MSE, direction="forward")
 step(emptyRT, scope=list( upper=fullRT ), scale=MSE)
 
+#Models for testing (Intersection between the three model building processes for each model)
+Meta = lm(Metacritic_user_nom ~ Metacritic_norm + July + BIN_DRAMA + BIN_SCIFI, data = fandango)
+Imdb = lm(IMDB_norm ~ BIN_HORROR + IMDB_user_vote_count + BIN_DOCUMENTARY + BIN_FOREIGN + February + BIN_ANIMATION + BIN_MUSICAL, data = fandango)
+Rt = lm(RT_user_norm ~ RT_norm + BIN_HORROR + BIN_FAMILY + BIN_ACTION_ADVENTURE + May, data = fandango)
+#Scifi is not significant at 0.05 for metacritic model
+summary(Meta)
+#Animation is not significant at 0.05 for imdb model
+summary(Imdb)
+#May and Action Adventure are not signifcant at 0.05 for rt model
+summary(Rt)
+#Updated model with non-significant predictors removed
+Meta = lm(Metacritic_user_nom ~ Metacritic_norm + July + BIN_DRAMA, data = fandango)
+Imdb = lm(IMDB_norm ~ BIN_HORROR + IMDB_user_vote_count + BIN_DOCUMENTARY + BIN_FOREIGN + February + BIN_MUSICAL, data = fandango)
+Rt = lm(RT_user_norm ~ RT_norm + BIN_HORROR + BIN_FAMILY, data = fandango)
+#All predictors are now significant!!
+summary(Meta)
+summary(Imdb)
+summary(Rt)
+#No multicollineaity!
+vif(Meta)
+vif(Imdb)
+vif(Rt)
+#Constant variance, Normally distributed, No influential points
+#Trend in data (frown) but not terrible could reasonably be attributed to randomness. Because of trend might not pass zero mean either
+plot(Meta)
+#Linear, Zero Mean, No influential points
+#Does not have constant variance, Not normal
+plot(Imdb)
+#Linear, Zero Mean, Near constant variance (very good but could be better), Normally distributed, No influential points.
+plot(Rt)
+#Log transformation of IMDB model
+logIMDBscore = log(fandango$IMDB_norm)
+ImdbLog = lm(logIMDBscore ~ BIN_HORROR + IMDB_user_vote_count + BIN_DOCUMENTARY + BIN_FOREIGN + February + BIN_MUSICAL, data = fandango)
+#Did not fix conditions AT ALL
+plot(ImdbLog)
+#Square root transformation
+sqrtIMDBscore = sqrt(fandango$IMDB_norm)
+ImdbSqrt = lm(sqrtIMDBscore ~ BIN_HORROR + IMDB_user_vote_count + BIN_DOCUMENTARY + BIN_FOREIGN + February + BIN_MUSICAL, data = fandango)
+#Did not fix conditions
+plot(ImdbSqrt)
+#Transforming user_votes
+logIMDBvotes = log(fandango$IMDB_user_vote_count)
+ImdbLogVotes = lm(IMDB_norm ~ BIN_HORROR + logIMDBvotes + BIN_DOCUMENTARY + BIN_FOREIGN + February + BIN_MUSICAL, data = fandango)
+plot(ImdbLogVotes)
+summary(Meta)
+summary(ImdbLogVotes)
+summary(Rt)
+
+##### END RS #####
+##### BEGIN SS #####
+histogram(~RT_norm, data = fandango)
+histogram(~RT_user_norm, data = fandango)
+histogram(~Metacritic_norm, data = fandango)
+histogram(~Metacritic_user_nom, data = fandango)
+histogram(~Metacritic_user_vote_count, data = fandango)
+histogram(~IMDB_norm, data = fandango)
+histogram(~IMDB_user_vote_count, data = fandango)
+histogram(~MONTH_DIFF, data = fandango)
+histogram(~log(IMDB_user_vote_count), data = fandango)
+histogram(~log(Metacritic_user_vote_count), data = fandango)
+##### END SS #####
