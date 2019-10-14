@@ -11,6 +11,7 @@ install.packages("HH")
 library(leaps)
 library(mosaic)
 library(HH)
+library(ggplot2)
 
 ## LOAD DATA
 #SEJIN'S FILE IMPORT
@@ -168,4 +169,6 @@ histogram(~IMDB_user_vote_count, data = fandango)
 histogram(~MONTH_DIFF, data = fandango)
 histogram(~log(IMDB_user_vote_count), data = fandango)
 histogram(~log(Metacritic_user_vote_count), data = fandango)
+
+boxplot(RT_user_norm~BOMGENRE, main = "Rotten Tomatoes' User Scores by Genre", data = fandango, las = 2, xlab = "",cex.axis=0.75)
 ##### END SS #####
