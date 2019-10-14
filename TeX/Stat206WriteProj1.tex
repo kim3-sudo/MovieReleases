@@ -9,12 +9,12 @@
 \usepackage{lipsum}
 
 \fancyhead{}
-\fancyhead[L]{ABBREVIATED TITLE}
+\fancyhead[L]{PREDICTING ONLINE MOVIE RATINGS}
 \fancyhead[R]{\thepage}
 \fancyfoot{}
 \fancypagestyle{plain}{
 	\fancyhead{}
-	\fancyhead[L]{Running head: ABBREVIATED TITLE}
+	\fancyhead[L]{Running head: PREDICTING ONLINE MOVIE RATINGS}
 	\fancyfoot{}
 	\fancyhead[R]{\thepage}
 }
@@ -36,7 +36,7 @@
 	\thispagestyle{plain}
 	\begin{center}
 		\vspace*{150pt}
-		Full Title Goes Here \\
+		Predicing Online Movie Ratings on IMDb, Metacritic, and Rotten Tomatoes. \\
 		Shanti Silver, Ryan Schultz \& Sejin Kim \\
 		Kenyon College \\
 	\end{center}
@@ -46,22 +46,89 @@
 		Shanti Silver, Ryan Schultz \& Sejin Kim, Kenyon College. \\
 		Contact: \href{mailto:silver1@kenyon.edu}{silver1@kenyon.edu}, \href{mailto:schultz4@kenyon.edu}{schultz4@kenyon.edu}, \href{mailto:kim3@kenyon.edu}{kim3@kenyon.edu} \\
 		\vspace*{40pt}
-		\textit{Keywords:} some keywords go here
+		\textit{Keywords:} prediction, movie ratings, online ratings
 	\end{raggedright}
 	
 	\newpage
 
 	\begin{center}
-		The Title Again
+		Predicting Online Movie Ratings on IMDb, Metacritic, and Rotten Tomatoes.
 	\end{center}
 	\begin{center}
-		\textbf{Heading 1 Text}
+		\textbf{Introduction}
 	\end{center}
 	\justify
 	%PUT THE TEXT HERE, THIS LIPSUM IS FOR SOME FILLER
-	\lipsum[10-13]
+	This project was inspired by a FiveThirtyEight article called “Be Suspicious of Online Movie Ratings, Especially Fandango” \footnote{Insert dataset citation}, which collected data on user ratings for four online, movie-rating platforms: Fandango, Metacritic, IMDb, and Rotten Tomatoes. Through analyzing this data, the authors concluded that while, the ratings from IMDb, Metacritic, and Rotten Tomatoes were typically comparable, the ratings for Fandango were largely skewed and not reflective of popular opinion regarding the films in question. 
+
+	Since the publication of this article, Fandango has removed this rating system from their website. However, the fact remains that in the modern era of Hollywood, online movie-rating platforms increasingly hold sway over box office performance. Because of this, our group was interested in exploring predictive factors of user ratings of films on Metacritic, IMDb, and Rotten Tomatoes. 
+
+	In order to explore this further, we utilized the data on which the FiveThirtyEight article was based. This data was retrieved from FiveThirtyEight; the raw dataset was published as a comma-separated-values spreadsheet on their Github. The dataset includes 146 observations of films released from September, 2014 to August, 2015 and the ratings were gathered on August 24th, 2019. This dataset originally included film names and user ratings for all three rating websites, critic rating for [which two] and number of user ratings for [which two]. The user ratings were presented in raw form with a different scale for each website, as well as normalized on a scale from 1 to 5, rounded to one decimal place and to whole numbers. We chose to use the normalized ratings that were rounded to one decimal place for this project. 
+
+	There were a number of prospective, predictive factors that were not included in this dataset, but that we wished to explore further. The first of these was the month in which films were released. We were interested in exploring if being released in a “dump month” (i.e. a month in which…) would affect the rating of a film. Because the ratings were pulled from each website on August, 2015, the dataset included eleven films that had only been available for rating less than a month. We suspected that this could have an affect on a films’ rating because of the possibility the most passionately negative or positive reviewers would be the only ones reviewing at that time, so we additionally created a variable to represent the number of months that a film was available to be rated. 
+
+	We were further interested in if the primary genre of a film had an effect on its rating and created [a number] of binary variables to represent the primary genres we retrieved from [source]. We further created binary variables to look at animated, rated R, and foreign films [source] to see if being in one of those categories had an effect on user score. 
+
+	[probably needs a final paragraph]
+
+	Methods [i will change all to boxplots]: 
+	Present and explore the data graphically. 
+	[erin said don’t look at normality, so I removed it] 
+	Here are the plots that I’m going to make 
+	Rating by year. 
+	The first thing that we looked at while exploring our dataset was the rating of the films by year. Using the R-code:
+\begin{verbatim}
+plot(RT_user_norm~YEAR, data=fandango)
+plot(Metacritic_user_nom~YEAR, data=fandango)
+plot(IMDB_norm~YEAR, data=fandango)
+\end{verbatim}
+	We created these plots for each of the three rating platforms.
 	\begin{center}
-		\textbf{Adding Power}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+	\end{center}
+	We can see from these dotplots that there were less movies included in the dataset in 2014 than in 2015.  We can additionally see that for all three movie rating platforms, the mean rating in 2014 appears to be higher than that of 2015. 
+
+	To explore this different further, we examined the relationship between the month a film was released and its rating using the R-code:
+	\begin{verbatim}
+plot(RT_user_norm~MONTH_USE, data=fandango)
+plot(Metacritic_user_nom~MONTH_USE, data=fandango)
+plot(IMDB_norm~MONTH_USE, data=fandango)
+	\end{verbatim}
+	We created these plots for each of the three rating platforms.
+	\begin{center}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+	\end{center}
+	It appears from the data that some months have higher ratings than others. For this analysis, we were especially interested in looking at dump months: January (1), February (2), August (8), or September (1). However, because there was only one case for September, there’s not very much we can tell about that month in particular. However, the mean ratings for January, February, and August don’t visually appear to have a lower or higher mean than non-dump months, so we ultimately decided not to code “dump months” into a binary variable to be used in further analysis. 
+
+	Another aspect of the month in which a film was released is how long it had been available for rating before being pulled for this dataset. We suspected that films that had been available for less time would largely have more positive or more negative ratings because the most fervent reviewers would be the only ones to have left reviews at that point. 
+	We created these plots for each of the three rating platforms.
+	\begin{center}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+	\end{center}
+	We did not find what we expected in this distribution, but it appears that all films that had been available for rating for longer had overall higher ratings, especially for Metacritic and IMDb. The film 11 months from the pull was the only film we had information for in September. 
+
+	We thought that the effect of the timing of the pull might additionally be reflected in the number of votes received by that film, so we made plots for the two websites for which data on the number of user votes were available in our dataset.
+	\begin{center}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+	\end{center}
+	The number of user votes does not appear to have a linear relationship with Metacritic's user scores, though it may with Rotten Tomatoes'.
+	\begin{center}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+	\end{center}
+	The ratngs for films on Metacritic do not seem to vary in any kind of meanful way across genres. However, both Rotten Tomatoes and IMDb seem to have some relationship.
+	\begin{center}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+		\insertgraphics[width=0.8\textwidth]{graphic.png}
+	\end{center}
+	\begin{center}
+		\textbf{Development and Justification of Our Model}
 	\end{center}
 	\justify
 	%PUT THE TEXT HERE, THIS LIPSUM IS FOR SOME FILLER
