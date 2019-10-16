@@ -35,7 +35,14 @@ plot(RT_user_norm, data = filter(fandango, MONTH=="MARCH", YEAR=="2014",fandango
 fandango$YEAR #SK
 rtuserbydumpmod <- lm(RT_user_norm~DUMPMONTH_BIN, data = fandango)#SK
 rtuserbydumpmod #SK
-summary(rtuserbydumpmod) #SK
+summary(rtuserbydumpmod) #SK.
+metauser = fandango$Metacritic_user_nom
+metacritic = fandango$Metacritic_norm
+cor(metauser, metacritic)
+rtuser = fandango$RT_user_norm
+rtcritic = fandango$RT_norm
+cor(rtuser, rtcritic)
+
 
 fullMETA=regsubsets(Metacritic_user_nom~Metacritic_norm+ANIMATED_BIN+YEAR+MONTH_USE+MONTH_DIFF+Metacritic_user_vote_count, data=fandango) #SS
 summary(fullMETA) #SS
