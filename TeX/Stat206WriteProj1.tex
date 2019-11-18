@@ -1,5 +1,5 @@
-\documentclass[a4paper,12pt]{report}
-\usepackage[none]{hyphenat}
+\documentclass[letter,12pt]{article}
+\usepackage{graphicx}
 \usepackage{url}
 \usepackage{setspace}
 \usepackage{ragged2e}
@@ -7,6 +7,19 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lipsum}
+\usepackage[none]{hyphenat}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+	\savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+	\savebox{\mysim}{\hbox{$\sim$}}%
+	\mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
 
 \fancyhead{}
 \fancyhead[L]{PREDICTING ONLINE MOVIE RATINGS}
