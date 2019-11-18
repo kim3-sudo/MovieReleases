@@ -96,11 +96,6 @@ plot(Metacritic_user_nom~YEAR, data=fandango)
 plot(IMDB_norm~YEAR, data=fandango)
 \end{verbatim}
 	We created these plots for each of the three rating platforms.
-	\begin{center}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-	\end{center}
 	We can see from these dotplots that there were less movies included in the dataset in 2014 than in 2015.  We can additionally see that for all three movie rating platforms, the mean rating in 2014 appears to be higher than that of 2015. 
 
 	To explore this different further, we examined the relationship between the month a film was released and its rating using the R-code:
@@ -110,36 +105,18 @@ plot(Metacritic_user_nom~MONTH_USE, data=fandango)
 plot(IMDB_norm~MONTH_USE, data=fandango)
 	\end{verbatim}
 	We created these plots for each of the three rating platforms.
-	\begin{center}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-	\end{center}
 	It appears from the data that some months have higher ratings than others. For this analysis, we were especially interested in looking at dump months: January (1), February (2), August (8), or September (1). However, because there was only one case for September, there’s not very much we can tell about that month in particular. However, the mean ratings for January, February, and August don’t visually appear to have a lower or higher mean than non-dump months, so we ultimately decided not to code “dump months” into a binary variable to be used in further analysis. 
 
 	Another aspect of the month in which a film was released is how long it had been available for rating before being pulled for this dataset. We suspected that films that had been available for less time would largely have more positive or more negative ratings because the most fervent reviewers would be the only ones to have left reviews at that point. 
 	We created these plots for each of the three rating platforms.
-	\begin{center}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-	\end{center}
 	We did not find what we expected in this distribution, but it appears that all films that had been available for rating for longer had overall higher ratings, especially for Metacritic and IMDb. The film 11 months from the pull was the only film we had information for in September. 
 
 	We thought that the effect of the timing of the pull might additionally be reflected in the number of votes received by that film, so we made plots for the two websites for which data on the number of user votes were available in our dataset.
-	\begin{center}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-	\end{center}
+
 	The number of user votes does not appear to have a linear relationship with Metacritic's user scores, though it may with Rotten Tomatoes'.
-	\begin{center}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-	\end{center}
+
 	The ratngs for films on Metacritic do not seem to vary in any kind of meanful way across genres. However, both Rotten Tomatoes and IMDb seem to have some relationship.
-	\begin{center}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-		\insertgraphics[width=0.8\textwidth]{graphic.png}
-	\end{center}
+
 	\begin{center}
 		\textbf{Development and Justification of Our Model}
 	\end{center}
