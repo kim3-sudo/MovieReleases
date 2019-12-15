@@ -30,7 +30,7 @@ fandango <- read.csv("")
 ##### R CODE #####
 
 # EDA
-plot(MONTH~RT_user_norm, data = fandango) #SK
+plot(MONTH_USE~RT_user_norm, data = fandango) #SK
 plot(RT_user_norm, data = filter(fandango, MONTH=="MARCH", YEAR=="2014",fandango)) #SK
 fandango$YEAR #SK
 rtuserbydumpmod <- lm(RT_user_norm~DUMPMONTH_BIN, data = fandango)#SK
